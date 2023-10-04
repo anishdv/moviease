@@ -41,7 +41,7 @@ const Header = () => {
       <Toolbar>
         <Box width="20%">
           <Link to="/" style={{ color: "white" }}>
-            <MovieCreationIcon />
+            <MovieCreationIcon color="action" />
           </Link>
         </Box>
         <Box width="50%" marginRight={"auto"} marginLeft="auto">

@@ -8,6 +8,7 @@ import {
   TextField,
   Toolbar,
 } from "@mui/material";
+import { grey } from "@mui/material/colors";
 import MovieIcon from "@mui/icons-material/Movie";
 import { Box } from "@mui/system";
 import { getAllMovies } from "../api-helpers/api-helpers";
@@ -41,7 +42,7 @@ const Header = () => {
       <Toolbar>
         <Box width={"20%"}>
           <IconButton LinkComponent={Link} to="/">
-            <MovieIcon />
+            <MovieIcon sx={{ color: grey[100] }} />
           </IconButton>
         </Box>
         <Box width={"30%"} margin="auto">

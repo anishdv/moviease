@@ -15,6 +15,8 @@
 
 ## Introduction
 
+![Preview](/frontend/public/image.png)
+
 Moviease is a web-based movie booking application built using the MERN (MongoDB, Express, React, Node.js) stack. It allows users to browse and book movie tickets online, provides a user-friendly experience for both administrators and customers, and offers various features to enhance the movie booking process. It is in building stage and evolving continuously.
 
 ## Technologies Used
