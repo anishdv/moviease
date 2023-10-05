@@ -52,6 +52,20 @@ export const getMovieDetails = async (id) => {
   return resData;
 };
 
+export const bookSeat = async (data) => {
+  console.log(data);
+  const res = await axios
+    .post(`movie/seating/${data.id}`, { seatNumber: data.seatNumber })
+    .catch((err) => console.log(err));
+
+  if (res.status !== 201) {
+    return console.log("Unexpected Error");
+  }
+
+  const resData = await res.data;
+  return resData;
+};
+
 export const newBooking = async (data) => {
   const res = await axios
     .post("/booking", {

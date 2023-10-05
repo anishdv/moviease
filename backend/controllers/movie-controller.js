@@ -93,3 +93,28 @@ export const getMovieById = async (req, res, next) => {
 
   return res.status(200).json({ movie });
 };
+
+export const seatingChange = async (req, res, next) => {
+  const id = req.params.id;
+  let movie;
+  const {seatNumber} = req.body;
+  console.log(seatNumber);
+
+  if (!seatNumber) {
+    return res.status(422).json({ message: "Invalid inputs!!" });
+  }
+
+  try {
+    movie = await Movie.findById(id);
+    console.log("movie is found")
+  } catch (err) {
+    return console.log(err);
+  }
+
+  if (!movie) {
+    return res.status(404).json({ message: "Invalid Movie ID" });
+  }
+  movie.bookedSeats.push(seatNumber);
+  await movie.save();
+  return res.status(201).json({ movie });
+};

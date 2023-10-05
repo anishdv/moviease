@@ -1,10 +1,15 @@
 import { Button, FormLabel, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getMovieDetails, newBooking } from "../../api-helpers/api-helpers";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  bookSeat,
+  getMovieDetails,
+  newBooking,
+} from "../../api-helpers/api-helpers";
 
 const Booking = () => {
+  const navigate = useNavigate();
   const [movie, setMovie] = useState();
   const [inputs, setInputs] = useState({ seatNumber: "", date: "" });
   const id = useParams().id;
@@ -27,20 +32,27 @@ const Booking = () => {
     newBooking({ ...inputs, movie: movie._id })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    bookSeat({ id: movie._id, seatNumber: inputs.seatNumber })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+  const handleButtonClick = () => {
+    navigate(`/seating/${id}`);
   };
   return (
     <div>
       {movie && (
         <Fragment>
           <Typography
-            padding={3}
-            fontFamily="fantasy"
+            marginTop={"20px"}
+            // padding={3}
+            // fontFamily="fantasy"
             variant="h4"
             textAlign={"center"}
           >
             Book Tickets Of Movie: {movie.title}
           </Typography>
-          <Box display={"flex"} padding={"30px"} justifyContent={"center"}>
+          <Box display={"flex"} paddinginX={"30px"} justifyContent={"center"}>
             <Box
               display={"flex"}
               justifyContent={"center"}
@@ -78,6 +90,7 @@ const Booking = () => {
                   Release Date: {new Date(movie.releaseDate).toDateString()}
                 </Typography>
               </Box>
+
               <form onSubmit={handleSubmit}>
                 <Box
                   padding={5}
@@ -109,6 +122,7 @@ const Booking = () => {
                 </Box>
               </form>
             </Box>
+            <Button onClick={handleButtonClick}>View Seating</Button>
           </Box>
         </Fragment>
       )}

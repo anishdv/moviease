@@ -33,7 +33,6 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/seating" element={<Seating/>}/>
           {!isUserLoggedIn && !isAdminLoggedIn && (
             <>
               {" "}
@@ -46,6 +45,7 @@ function App() {
               {" "}
               <Route path="/user" element={<UserProfile />} />
               <Route path="/booking/:id" element={<Booking />} />
+              <Route path="/seating/:id" element={<Seating />} />
             </>
           )}
           {isAdminLoggedIn && !isUserLoggedIn && (
