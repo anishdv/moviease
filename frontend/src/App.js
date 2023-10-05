@@ -11,6 +11,7 @@ import Movies from "./components/Movies/Movies";
 import AdminProfile from "./profile/AdminProfile";
 import UserProfile from "./profile/UserProfile";
 import { adminActions, userActions } from "./store";
+import Seating from "./components/Seating/Seating";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<Movies />} />
+          <Route path="/seating" element={<Seating/>}/>
           {!isUserLoggedIn && !isAdminLoggedIn && (
             <>
               {" "}
